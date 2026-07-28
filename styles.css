@@ -193,10 +193,65 @@ button {
   width: 100%;
 }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  z-index: 2;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  background: rgba(14, 18, 28, 0.55);
+  transition: color 0.3s, border-color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+
+.icon-btn:hover,
+.icon-btn:focus-visible {
+  color: var(--text);
+  border-color: rgba(94, 234, 212, 0.4);
+}
+
+.icon-btn.on {
+  color: var(--accent);
+  border-color: rgba(94, 234, 212, 0.5);
+  box-shadow: 0 0 18px rgba(94, 234, 212, 0.2);
+}
+
+.lang-btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  min-width: 3.2rem;
+  justify-content: center;
+  letter-spacing: 0.12em;
+}
+
+.audio-label {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .audio-label {
+    display: inline;
+  }
+}
+
 .nav-toggle {
   display: none;
   color: var(--text);
   padding: 0.4rem;
+}
+
+.sim-stage.chaos-active {
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 107, 61, 0.45), 0 0 40px rgba(255, 107, 61, 0.25);
 }
 
 /* HERO */
@@ -780,12 +835,16 @@ button {
   aspect-ratio: 0.72;
   z-index: 2;
   transform-style: preserve-3d;
-  animation: dropFloat 5s ease-in-out infinite, dropTilt 12s ease-in-out infinite;
+  /* Float only when not pointer-driven (JS overrides transform on hover) */
+  animation: dropFloat 5s ease-in-out infinite;
   filter: drop-shadow(0 0 30px rgba(94, 234, 212, 0.35)) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
   cursor: grab;
+  transition: transform 0.15s var(--ease-soft);
 }
 
+.drop-stage:hover .water-drop,
 .water-drop:active {
+  animation: none;
   cursor: grabbing;
 }
 
@@ -796,16 +855,6 @@ button {
   }
   50% {
     transform: translateY(-14px);
-  }
-}
-
-@keyframes dropTilt {
-  0%,
-  100% {
-    rotate: y -8deg x 4deg;
-  }
-  50% {
-    rotate: y 10deg x -6deg;
   }
 }
 
@@ -1017,6 +1066,188 @@ button {
 .drop-art.fallback img,
 .sophon-art.fallback img {
   display: none;
+}
+
+/* WALLFACERS */
+.wallfacers {
+  max-width: calc(var(--max) + 5rem);
+}
+
+.wall-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: var(--max);
+  margin: 0 auto 1.5rem;
+}
+
+.wall-card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.5rem 1.35rem;
+  background: linear-gradient(160deg, rgba(14, 18, 28, 0.9), rgba(8, 10, 16, 0.85));
+  transition: transform 0.4s var(--ease-out), border-color 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.wall-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 100% 0%, rgba(94, 234, 212, 0.06), transparent 45%);
+  pointer-events: none;
+}
+
+.wall-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(94, 234, 212, 0.35);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+}
+
+.wall-card.featured {
+  border-color: rgba(94, 234, 212, 0.35);
+  background: linear-gradient(160deg, rgba(20, 40, 48, 0.95), rgba(8, 12, 18, 0.9));
+}
+
+.wall-tag {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  opacity: 0.7;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.wall-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.55rem;
+  letter-spacing: 0.04em;
+}
+
+.wall-card p {
+  color: var(--muted);
+  font-weight: 300;
+  font-size: 0.92rem;
+}
+
+.wall-note {
+  max-width: var(--max);
+  margin: 0 auto;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  opacity: 0.85;
+  padding: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+/* FOIL */
+.foil {
+  max-width: none;
+}
+
+.foil .section-head {
+  max-width: var(--max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.foil-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  max-width: var(--max);
+  margin: 0 auto;
+  align-items: center;
+}
+
+.foil-stage {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #05060a;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+#foilCanvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  height: auto;
+}
+
+.foil-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  padding: 1rem 1.1rem;
+  border-top: 1px solid var(--line);
+  background: rgba(8, 10, 16, 0.9);
+}
+
+.foil-copy > p {
+  color: var(--muted);
+  font-weight: 300;
+  margin: 1.2rem 0;
+}
+
+.foil-stats .stat-n {
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+
+/* SOPHON */
+.sophon-sec {
+  max-width: calc(var(--max) + 5rem);
+}
+
+.sophon-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.sophon-card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.6rem 1.3rem;
+  background: rgba(14, 18, 28, 0.7);
+  text-align: left;
+  transition: transform 0.35s var(--ease-out), border-color 0.3s;
+}
+
+.sophon-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.sophon-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: var(--accent-2);
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  margin-bottom: 1rem;
+}
+
+.sophon-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.45rem;
+}
+
+.sophon-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 300;
 }
 
 /* QUOTES */
@@ -1311,7 +1542,10 @@ button {
 @media (max-width: 960px) {
   .sim-panel,
   .drop-layout,
-  .law-cards {
+  .foil-layout,
+  .law-cards,
+  .sophon-grid,
+  .wall-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1354,6 +1588,9 @@ button {
   }
 
   .quote-stage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     grid-template-columns: 1fr;
     justify-items: center;
   }
@@ -1365,12 +1602,6 @@ button {
   .quote-card {
     order: 1;
     width: 100%;
-  }
-
-  .quote-stage {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
   }
 }
 

@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="三体 · 黑暗森林 — 沉浸式科幻体验：三体问题模拟、水滴探测器、经典名言" />
+  <meta name="description" content="三体 · 黑暗森林 — 沉浸式科幻体验：三体问题模拟、水滴、面壁者、二向箔、经典名言" />
   <meta name="theme-color" content="#05060a" />
   <title>三体 · THREE BODY — 黑暗森林</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%05060a'/%3E%3Ccircle cx='20' cy='24' r='6' fill='%23ff6b3d'/%3E%3Ccircle cx='44' cy='22' r='5' fill='%23ffd166'/%3E%3Ccircle cx='34' cy='42' r='7' fill='%23e8f1ff'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2305060a'/%3E%3Ccircle cx='20' cy='24' r='6' fill='%23ff6b3d'/%3E%3Ccircle cx='44' cy='22' r='5' fill='%23ffd166'/%3E%3Ccircle cx='34' cy='42' r='7' fill='%23e8f1ff'/%3E%3C/svg%3E" />
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -18,7 +18,7 @@
   <canvas id="starfield" aria-hidden="true"></canvas>
 
   <header class="nav">
-    <a class="logo" href="#hero" aria-label="回到顶部">
+    <a class="logo" href="#hero" data-i18n-aria="logo.home">
       <span class="logo-mark" aria-hidden="true">
         <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5">
           <circle cx="10" cy="12" r="3.2" />
@@ -29,17 +29,29 @@
       </span>
       <span class="logo-text">THREE<span>BODY</span></span>
     </a>
-    <nav class="nav-links" aria-label="主导航">
-      <a href="#problem">三体问题</a>
-      <a href="#droplet">水滴</a>
-      <a href="#quotes">名言</a>
-      <a href="#forest">黑暗森林</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#problem" data-i18n="nav.problem">三体问题</a>
+      <a href="#droplet" data-i18n="nav.droplet">水滴</a>
+      <a href="#wallfacers" data-i18n="nav.wallfacers">面壁者</a>
+      <a href="#foil" data-i18n="nav.foil">二向箔</a>
+      <a href="#quotes" data-i18n="nav.quotes">名言</a>
+      <a href="#forest" data-i18n="nav.forest">黑暗森林</a>
     </nav>
-    <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false" id="navToggle">
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-        <path d="M4 7h16M4 12h16M4 17h12" />
-      </svg>
-    </button>
+    <div class="nav-actions">
+      <button type="button" class="icon-btn" id="audioToggle" aria-pressed="false" data-i18n-aria="audio.play">
+        <svg class="ic-play" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M11 5L6 9H3v6h3l5 4V5z" stroke-linejoin="round"/>
+          <path d="M15.5 8.5a5 5 0 010 7" stroke-linecap="round"/>
+        </svg>
+        <span class="audio-label" data-i18n="audio.play">播放氛围音</span>
+      </button>
+      <button type="button" class="icon-btn lang-btn" id="langToggle" aria-label="Language">EN</button>
+      <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false" id="navToggle" data-i18n-aria="nav.open">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <path d="M4 7h16M4 12h16M4 17h12" />
+        </svg>
+      </button>
+    </div>
   </header>
 
   <main>
@@ -50,29 +62,29 @@
       <div class="hero-content">
         <p class="eyebrow">
           <span class="pulse-dot" aria-hidden="true"></span>
-          给岁月以文明 · 给时光以生命
+          <span data-i18n="hero.eyebrow">给岁月以文明 · 给时光以生命</span>
         </p>
         <h1 class="hero-title">
-          <span class="line line-zh">三体</span>
+          <span class="line line-zh" data-i18n="hero.title">三体</span>
           <span class="line line-en">THE THREE-BODY PROBLEM</span>
         </h1>
-        <p class="hero-sub">
+        <p class="hero-sub" data-i18n="hero.sub" data-i18n-html="1">
           在不可预测的恒星引力中，文明学会了恐惧；<br />
           在完美的水滴面前，舰队学会了沉默。
         </p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#problem">
-            <span>进入三体世界</span>
+            <span data-i18n="hero.enter">进入三体世界</span>
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
               <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </a>
-          <a class="btn btn-ghost" href="#quotes">经典名言</a>
+          <a class="btn btn-ghost" href="#quotes" data-i18n="hero.quotes">经典名言</a>
         </div>
         <div class="hero-meta">
-          <div><span class="meta-k">ERA</span><span class="meta-v">危机纪元</span></div>
-          <div><span class="meta-k">AXIOM</span><span class="meta-v">黑暗森林</span></div>
-          <div><span class="meta-k">SIGNAL</span><span class="meta-v">勿回复</span></div>
+          <div><span class="meta-k">ERA</span><span class="meta-v" data-i18n="hero.era">危机纪元</span></div>
+          <div><span class="meta-k">AXIOM</span><span class="meta-v" data-i18n="hero.axiom">黑暗森林</span></div>
+          <div><span class="meta-k">SIGNAL</span><span class="meta-v" data-i18n="hero.signal">勿回复</span></div>
         </div>
       </div>
       <div class="scroll-hint" aria-hidden="true">
@@ -81,100 +93,81 @@
       </div>
     </section>
 
-    <!-- QUOTE TICKER -->
-    <div class="ticker" aria-label="经典名言滚动条">
-      <div class="ticker-track" id="tickerTrack">
-        <!-- filled by JS -->
-      </div>
+    <div class="ticker" data-i18n-aria="ticker.aria">
+      <div class="ticker-track" id="tickerTrack"></div>
     </div>
 
-    <!-- THREE BODY PROBLEM -->
+    <!-- THREE BODY -->
     <section id="problem" class="section problem">
       <div class="section-head">
-        <p class="section-index">01 / SIMULATION</p>
-        <h2>三体问题</h2>
-        <p class="section-desc">
+        <p class="section-index" data-i18n="problem.index">01 / SIMULATION</p>
+        <h2 data-i18n="problem.title">三体问题</h2>
+        <p class="section-desc" data-i18n="problem.desc">
           三颗恒星的引力纠缠，使三体世界在「恒纪元」与「乱纪元」之间永恒摇摆。
-          下方是实时 n 体引力模拟——轨迹即命运。
         </p>
       </div>
 
       <div class="sim-panel">
         <div class="sim-stage">
-          <canvas id="threeBody" aria-label="三体引力模拟画布"></canvas>
+          <canvas id="threeBody" aria-label="Three-body gravity simulation"></canvas>
           <div class="sim-hud">
-            <div class="hud-row">
-              <span>G-FIELD</span>
-              <span id="hudEnergy">—</span>
-            </div>
-            <div class="hud-row">
-              <span>EPOCH</span>
-              <span id="hudEpoch">恒纪元</span>
-            </div>
-            <div class="hud-row">
-              <span>T+</span>
-              <span id="hudTime">0.00</span>
-            </div>
+            <div class="hud-row"><span>ENERGY</span><span id="hudEnergy">—</span></div>
+            <div class="hud-row"><span>EPOCH</span><span id="hudEpoch">恒纪元</span></div>
+            <div class="hud-row"><span>T+</span><span id="hudTime">0.00</span></div>
           </div>
           <div class="sim-legend">
-            <span><i class="dot d1"></i>恒星 α</span>
-            <span><i class="dot d2"></i>恒星 β</span>
-            <span><i class="dot d3"></i>恒星 γ</span>
-            <span><i class="dot d4"></i>行星</span>
+            <span><i class="dot d1"></i><span data-i18n="problem.leg1">恒星 α</span></span>
+            <span><i class="dot d2"></i><span data-i18n="problem.leg2">恒星 β</span></span>
+            <span><i class="dot d3"></i><span data-i18n="problem.leg3">恒星 γ</span></span>
+            <span><i class="dot d4"></i><span data-i18n="problem.leg4">行星</span></span>
           </div>
         </div>
         <aside class="sim-side">
-          <h3>不可求解的命运</h3>
-          <p>
-            三体问题没有一般解析解。初始条件的毫厘之差，会在混沌中被放大成毁灭性的气候与文明崩溃。
-          </p>
+          <h3 data-i18n="problem.sideTitle">不可求解的命运</h3>
+          <p data-i18n="problem.sideBody">三体问题没有一般解析解。</p>
           <ul class="feature-list">
             <li>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-              实时重力积分 · 轨迹残影
+              <span data-i18n="problem.f1">Velocity Verlet 积分 · 质心坐标系</span>
             </li>
             <li>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="3"/></svg>
-              三星 + 行星 · 乱/恒纪元判定
+              <span data-i18n="problem.f2">三星 + 行星 · 乱/恒纪元判定</span>
             </li>
             <li>
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
-              可重置初值 · 观察混沌分岔
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+              <span data-i18n="problem.f3">相机自动跟随 · 混沌脉冲可见</span>
             </li>
           </ul>
           <div class="sim-controls">
             <button type="button" class="btn btn-primary" id="btnReset">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              重置模拟
+              <span data-i18n="problem.reset">重置模拟</span>
             </button>
-            <button type="button" class="btn btn-ghost" id="btnChaos">注入混沌</button>
+            <button type="button" class="btn btn-ghost" id="btnChaos" data-i18n="problem.chaos">注入混沌</button>
           </div>
           <blockquote class="side-quote">
-            「生存是文明的第一需要。」
-            <cite>— 三体 · 黑暗森林法则</cite>
+            <span data-i18n="problem.quote">「生存是文明的第一需要。」</span>
+            <cite data-i18n="problem.cite">— 三体 · 黑暗森林法则</cite>
           </blockquote>
         </aside>
       </div>
     </section>
 
-    <!-- WATER DROP -->
+    <!-- DROPLET -->
     <section id="droplet" class="section droplet">
       <div class="section-head">
-        <p class="section-index">02 / PROBE</p>
-        <h2>水滴 · 探测器</h2>
-        <p class="section-desc">
-          强互作用力材料构成的完美液滴——镜面无瑕，锋利无声。
-          它以几乎静止的姿态，改写了整个星际舰队的历史。
-        </p>
+        <p class="section-index" data-i18n="drop.index">02 / PROBE</p>
+        <h2 data-i18n="drop.title">水滴 · 探测器</h2>
+        <p class="section-desc" data-i18n="drop.desc">强互作用力材料构成的完美液滴。</p>
       </div>
-
       <div class="drop-layout">
         <div class="drop-stage" id="dropStage">
           <div class="drop-space">
             <div class="drop-ring r1" aria-hidden="true"></div>
             <div class="drop-ring r2" aria-hidden="true"></div>
             <div class="drop-ring r3" aria-hidden="true"></div>
-            <div class="water-drop" id="waterDrop" role="img" aria-label="水滴探测器三维视觉">
+            <div class="water-drop" id="waterDrop" role="img" aria-label="Droplet probe">
               <div class="drop-core"></div>
               <div class="drop-shine"></div>
               <div class="drop-edge"></div>
@@ -182,67 +175,162 @@
             <canvas id="dropParticles" aria-hidden="true"></canvas>
           </div>
           <div class="drop-caption">
-            <span class="badge">STRONG INTERACTION MATERIAL</span>
-            <p>表面绝对光滑 · 分子级精度 · 不可摧毁</p>
+            <span class="badge" data-i18n="drop.badge">STRONG INTERACTION MATERIAL</span>
+            <p data-i18n="drop.cap">表面绝对光滑 · 分子级精度 · 不可摧毁</p>
           </div>
         </div>
-
         <div class="drop-copy">
           <div class="stat-grid">
             <div class="stat">
               <span class="stat-n">3.5</span>
               <span class="stat-u">m</span>
-              <span class="stat-l">长度</span>
+              <span class="stat-l" data-i18n="drop.s1">长度</span>
             </div>
             <div class="stat">
               <span class="stat-n">∞</span>
               <span class="stat-u">hardness</span>
-              <span class="stat-l">强互作用力</span>
+              <span class="stat-l" data-i18n="drop.s2">强互作用力</span>
             </div>
             <div class="stat">
               <span class="stat-n">1</span>
               <span class="stat-u">unit</span>
-              <span class="stat-l">摧毁整支舰队</span>
+              <span class="stat-l" data-i18n="drop.s3">摧毁整支舰队</span>
             </div>
           </div>
-          <h3>「它是一面镜子」</h3>
-          <p>
-            水滴表面反射出周围的星空与舰体，完美到令人不安。
-            当它加速时，人类第一次真正理解了技术代差意味着什么——
-            不是差距，而是维度。
-          </p>
+          <h3 data-i18n="drop.h3">「它是一面镜子」</h3>
+          <p data-i18n="drop.p">水滴表面反射出周围的星空与舰体。</p>
           <div class="timeline">
             <div class="tl-item">
-              <span class="tl-y">危机 205</span>
-              <span class="tl-t">水滴抵达太阳系</span>
+              <span class="tl-y" data-i18n="drop.t1y">危机 205</span>
+              <span class="tl-t" data-i18n="drop.t1">水滴抵达太阳系</span>
             </div>
             <div class="tl-item">
-              <span class="tl-y">接触</span>
-              <span class="tl-t">人类舰队举行盛大欢迎</span>
+              <span class="tl-y" data-i18n="drop.t2y">接触</span>
+              <span class="tl-t" data-i18n="drop.t2">人类舰队举行盛大欢迎</span>
             </div>
             <div class="tl-item danger">
-              <span class="tl-y">屠杀</span>
-              <span class="tl-t">两千艘战舰在寂静中消亡</span>
+              <span class="tl-y" data-i18n="drop.t3y">屠杀</span>
+              <span class="tl-t" data-i18n="drop.t3">两千艘战舰在寂静中消亡</span>
             </div>
           </div>
-          <figure class="drop-art" id="dropArt">
-            <img src="assets/water-drop.jpg" alt="水滴探测器概念图：镜面水银般的泪滴形星际探测器" loading="lazy" onerror="this.parentElement.classList.add('fallback')" />
-            <figcaption>概念视觉 · 强互作用力水滴</figcaption>
+          <figure class="drop-art">
+            <img src="assets/water-drop.jpg" alt="Droplet probe concept art" loading="lazy" onerror="this.parentElement.classList.add('fallback')" />
+            <figcaption data-i18n="drop.fig">概念视觉 · 强互作用力水滴</figcaption>
           </figure>
         </div>
+      </div>
+    </section>
+
+    <!-- WALLFACERS -->
+    <section id="wallfacers" class="section wallfacers">
+      <div class="section-head">
+        <p class="section-index" data-i18n="wall.index">03 / WALLFACERS</p>
+        <h2 data-i18n="wall.title">面壁者计划</h2>
+        <p class="section-desc" data-i18n="wall.desc">在智子的全景监视下，人类唯一的策略是：把计划锁进一个人的大脑。</p>
+      </div>
+      <div class="wall-grid">
+        <article class="wall-card">
+          <span class="wall-tag">01</span>
+          <h3 data-i18n="wall.c1t">弗雷德里克·泰勒</h3>
+          <p data-i18n="wall.c1">前美国国防部长。</p>
+        </article>
+        <article class="wall-card">
+          <span class="wall-tag">02</span>
+          <h3 data-i18n="wall.c2t">曼努尔·雷迪亚兹</h3>
+          <p data-i18n="wall.c2">委内瑞拉领袖。</p>
+        </article>
+        <article class="wall-card">
+          <span class="wall-tag">03</span>
+          <h3 data-i18n="wall.c3t">比尔·希恩斯</h3>
+          <p data-i18n="wall.c3">精神印记。</p>
+        </article>
+        <article class="wall-card featured">
+          <span class="wall-tag">04</span>
+          <h3 data-i18n="wall.c4t">罗辑</h3>
+          <p data-i18n="wall.c4">唯一真正的面壁者。</p>
+        </article>
+      </div>
+      <p class="wall-note" data-i18n="wall.note">「面壁者的真实战略，藏在思想的黑暗处。」</p>
+    </section>
+
+    <!-- DUAL VECTOR FOIL -->
+    <section id="foil" class="section foil">
+      <div class="section-head">
+        <p class="section-index" data-i18n="foil.index">04 / DIMENSION</p>
+        <h2 data-i18n="foil.title">二向箔 · 降维打击</h2>
+        <p class="section-desc" data-i18n="foil.desc">一张只有两个空间维度的小纸片。</p>
+      </div>
+      <div class="foil-layout">
+        <div class="foil-stage">
+          <canvas id="foilCanvas" aria-label="Dual-vector foil dimensional collapse"></canvas>
+          <div class="foil-controls">
+            <button type="button" class="btn btn-primary" id="btnFoilPlay" data-i18n="foil.play">播放降维</button>
+            <button type="button" class="btn btn-ghost" id="btnFoilReset" data-i18n="foil.reset">重置空间</button>
+          </div>
+        </div>
+        <div class="foil-copy">
+          <div class="stat-grid foil-stats">
+            <div class="stat">
+              <span class="stat-n">2</span>
+              <span class="stat-u">D</span>
+              <span class="stat-l" data-i18n="foil.stat1">空间维度</span>
+            </div>
+            <div class="stat">
+              <span class="stat-n" data-i18n="foil.stat2v">降维展开</span>
+              <span class="stat-l" data-i18n="foil.stat2">打击方式</span>
+            </div>
+            <div class="stat">
+              <span class="stat-n" data-i18n="foil.stat3v">三维归零</span>
+              <span class="stat-l" data-i18n="foil.stat3">结果</span>
+            </div>
+          </div>
+          <p data-i18n="foil.body">歌者文明随手抛出的清理工具。</p>
+          <blockquote class="side-quote" data-i18n="foil.q">「不要敬畏主，因为它不是主。」</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOPHON -->
+    <section id="sophon" class="section sophon-sec">
+      <div class="section-head">
+        <p class="section-index" data-i18n="sophon.index">05 / SOPHON</p>
+        <h2 data-i18n="sophon.title">智子 · 锁死科学</h2>
+        <p class="section-desc" data-i18n="sophon.desc">把质子展开到二维、蚀刻电路、再折叠回十一维。</p>
+      </div>
+      <div class="sophon-grid">
+        <article class="sophon-card">
+          <div class="sophon-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
+          </div>
+          <h3 data-i18n="sophon.b1t">量子纠缠通信</h3>
+          <p data-i18n="sophon.b1">即时传讯，无视光速延迟</p>
+        </article>
+        <article class="sophon-card">
+          <div class="sophon-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12h16M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg>
+          </div>
+          <h3 data-i18n="sophon.b2t">粒子加速器干扰</h3>
+          <p data-i18n="sophon.b2">实验结果随机化，物理学停摆</p>
+        </article>
+        <article class="sophon-card">
+          <div class="sophon-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2"/></svg>
+          </div>
+          <h3 data-i18n="sophon.b3t">全域监视</h3>
+          <p data-i18n="sophon.b3">地球对三体几乎透明</p>
+        </article>
       </div>
     </section>
 
     <!-- QUOTES -->
     <section id="quotes" class="section quotes">
       <div class="section-head">
-        <p class="section-index">03 / AXIOMS</p>
-        <h2>经典名言</h2>
-        <p class="section-desc">穿越两百年危机的低语，至今仍在宇宙背景辐射中回响。</p>
+        <p class="section-index" data-i18n="quotes.index">06 / AXIOMS</p>
+        <h2 data-i18n="quotes.title">经典名言</h2>
+        <p class="section-desc" data-i18n="quotes.desc">穿越两百年危机的低语。</p>
       </div>
-
       <div class="quote-stage">
-        <button type="button" class="q-nav prev" id="qPrev" aria-label="上一条">
+        <button type="button" class="q-nav prev" id="qPrev" data-i18n-aria="quotes.prev">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <blockquote class="quote-card" id="quoteCard">
@@ -252,44 +340,43 @@
             <span class="quote-idx" id="quoteIdx"></span>
           </footer>
         </blockquote>
-        <button type="button" class="q-nav next" id="qNext" aria-label="下一条">
+        <button type="button" class="q-nav next" id="qNext" data-i18n-aria="quotes.next">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
-
-      <div class="quote-grid" id="quoteGrid" aria-label="名言列表"></div>
+      <div class="quote-grid" id="quoteGrid"></div>
     </section>
 
     <!-- DARK FOREST -->
     <section id="forest" class="section forest">
       <div class="forest-bg" id="forestBg"></div>
       <div class="forest-content">
-        <p class="section-index">04 / LAW</p>
-        <h2>黑暗森林法则</h2>
+        <p class="section-index" data-i18n="forest.index">07 / LAW</p>
+        <h2 data-i18n="forest.title">黑暗森林法则</h2>
         <div class="law-cards">
           <article class="law">
             <span class="law-n">I</span>
-            <h3>生存是文明的第一需要</h3>
-            <p>一切文明的底层协议：先活下来，再谈其余。</p>
+            <h3 data-i18n="forest.l1t">生存是文明的第一需要</h3>
+            <p data-i18n="forest.l1">一切文明的底层协议。</p>
           </article>
           <article class="law">
             <span class="law-n">II</span>
-            <h3>文明不断增长和扩张</h3>
-            <p>但宇宙中的物质总量保持不变——零和的宇宙舞台。</p>
+            <h3 data-i18n="forest.l2t">文明不断增长和扩张</h3>
+            <p data-i18n="forest.l2">物质总量保持不变。</p>
           </article>
           <article class="law">
             <span class="law-n">III</span>
-            <h3>猜疑链与技术爆炸</h3>
-            <p>无法确认对方善意，也无法确认对方永远落后——于是，先发制人成为理性选择。</p>
+            <h3 data-i18n="forest.l3t">猜疑链与技术爆炸</h3>
+            <p data-i18n="forest.l3">先发制人成为理性选择。</p>
           </article>
         </div>
-        <p class="forest-closer">
+        <p class="forest-closer" data-i18n="forest.closer" data-i18n-html="1">
           宇宙就是一座黑暗森林，每个文明都是带枪的猎人。<br />
           <strong>轻轻拨开挡路的树枝，竭力不让脚步发出一点儿声音……</strong>
         </p>
-        <figure class="sophon-art" id="sophonArt">
-          <img src="assets/sophon.jpg" alt="智子概念图：二维展开的质子能量网格" loading="lazy" onerror="this.parentElement.classList.add('fallback')" />
-          <figcaption>智子 · 锁死基础科学的高维监视</figcaption>
+        <figure class="sophon-art">
+          <img src="assets/sophon.jpg" alt="Sophon concept art" loading="lazy" onerror="this.parentElement.classList.add('fallback')" />
+          <figcaption data-i18n="forest.fig">智子 · 锁死基础科学的高维监视</figcaption>
         </figure>
       </div>
     </section>
@@ -299,11 +386,11 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="logo-text">THREE<span>BODY</span></span>
-        <p>致敬刘慈欣《三体》三部曲 · 粉丝致敬页，非官方</p>
+        <p data-i18n="footer.copy">致敬刘慈欣《三体》三部曲 · 粉丝致敬页，非官方</p>
       </div>
       <div class="footer-meta">
         <p>GitHub Pages · snakeJohn/threebody</p>
-        <p class="muted">「给岁月以文明，给时光以生命。」</p>
+        <p class="muted" data-i18n="footer.quote">「给岁月以文明，给时光以生命。」</p>
       </div>
     </div>
   </footer>
